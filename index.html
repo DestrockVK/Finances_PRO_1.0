@@ -24,7 +24,6 @@
         [data-theme="dark"] {
             --bg-body: #050505; --bg-app: #0f111a; --bg-card: #1c1f2e; --text-main: #f9fafb; --text-muted: #8b92a5; --border: #2a2d3e; --shadow-color: rgba(0,0,0,0.4); --green: #00e676; --red: #ff4d4f;
         }
-        /* Temas com gradiente (degrader) */
         [data-accent="default"] { --accent-1: #8b5cf6; --accent-2: #00b4d8; }
         [data-accent="blue"] { --accent-1: #1e3a8a; --accent-2: #3b82f6; }
         [data-accent="emerald"] { --accent-1: #065f46; --accent-2: #10b981; }
@@ -79,14 +78,14 @@
         .budget-fill { height: 100%; background: var(--accent-2); border-radius: 3px; transition: width 0.5s;}
         .search-box { margin: 0 25px 10px 25px; background: var(--bg-card); border-radius: 15px; padding: 12px 20px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--border);}
         .search-box input { background: transparent; border: none; color: var(--text-main); outline: none; width: 100%;}
-        .filter-scroll { display: flex; gap: 10px; overflow-x: auto; padding: 0 25px 15px 25px;}
-        .filter-scroll select { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); padding: 8px 12px; border-radius: 20px; font-size: 11px;}
+        .filter-scroll { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 25px 15px 25px; }
+        .filter-scroll select { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); padding: 8px 12px; border-radius: 20px; font-size: 12px; outline: none; white-space: nowrap; flex: 0 1 auto; max-width: calc(33% - 8px); }
         .list-area { padding: 0 25px; display: flex; flex-direction: column; gap: 15px; }
         .list-item { background: var(--bg-card); padding: 15px; border-radius: 15px; display: flex; align-items: center; gap: 15px; border: 1px solid var(--border);}
         .li-icon { width: 45px; height: 45px; background: var(--bg-app); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 18px;}
         .li-info { flex: 1; overflow: hidden;}
         .li-info h4 { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-        .li-info p { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden;}
+        .li-info p { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
         .li-amount { font-size: 14px; font-weight: 700; }
         .li-amount.inc { color: var(--green); }
         .li-amount.exp { color: var(--red); }
@@ -96,10 +95,10 @@
         .nav-item.active { color: var(--accent-2); }
         .input-huge { background:transparent; border:none; border-bottom:2px solid var(--accent-2); font-size:40px; font-weight:700; color:var(--text-main); width:100%; text-align:center; outline:none; padding:10px 0;}
         .install-btn { position: fixed; bottom: 80px; right: 20px; background: var(--accent-2); color: white; border: none; border-radius: 50px; padding: 10px 20px; font-size: 14px; font-weight: bold; cursor: pointer; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: none; }
-        .installment-group { background: var(--bg-card); border-radius: 12px; padding: 12px; border: 1px solid var(--border); }
+        .installment-group, .recurring-group { background: var(--bg-card); border-radius: 12px; padding: 12px; border: 1px solid var(--border); margin-top: 10px; }
         .checkbox-label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .installment-details { margin-top: 12px; display: none; gap: 10px; align-items: center; }
-        .installment-details.show { display: flex; }
+        .installment-details, .recurring-details { margin-top: 12px; display: none; gap: 10px; align-items: center; }
+        .installment-details.show, .recurring-details.show { display: flex; }
         .setting-block { background: var(--bg-card); border-radius: 20px; padding: 10px 20px; margin: 0 25px 20px 25px; border: 1px solid var(--border);}
         .setting-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border);}
         .setting-item:last-child { border-bottom: none; }
@@ -122,18 +121,20 @@
         .pie-layout { display: flex; align-items: center; justify-content: space-between; }
         .pie-canvas-wrap { width: 120px; height: 120px; }
         .custom-legend { display: flex; flex-direction: column; gap: 5px; }
-        .period-selector { margin: 0 25px 20px 25px; background: var(--bg-card); border-radius: 20px; padding: 15px; border: 1px solid var(--border);}
-        .period-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
-        .period-btn { background: var(--bg-app); border: 1px solid var(--border); padding: 8px 12px; border-radius: 30px; font-size: 12px; cursor: pointer; color: var(--text-main);}
+        .period-selector { margin: 0 25px 20px 25px; background: var(--bg-card); border-radius: 20px; padding: 15px; border: 1px solid var(--border); }
+        .period-buttons { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
+        .period-btn { background: var(--bg-app); border: 1px solid var(--border); padding: 6px 12px; border-radius: 30px; font-size: 12px; cursor: pointer; color: var(--text-main); white-space: nowrap; }
         .period-btn.active { background: var(--accent-2); color: white; border-color: var(--accent-2); }
-        .date-custom { margin-top: 10px; display: none; gap: 10px; align-items: center; }
-        .date-custom input { padding: 10px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); }
-        .report-summary { display: flex; justify-content: space-between; margin: 0 25px 20px 25px; gap: 10px; }
-        .report-card { background: var(--bg-card); border-radius: 16px; padding: 12px; flex: 1; text-align: center; border: 1px solid var(--border);}
-        .report-card h3 { font-size: 12px; color: var(--text-muted); }
-        .report-card p { font-size: 18px; font-weight: 700; }
+        .date-custom { margin-top: 10px; display: none; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; }
+        .date-custom input { padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); font-size: 14px; }
+        .report-summary { display: flex; justify-content: space-between; margin: 0 25px 20px 25px; gap: 10px; flex-wrap: wrap; }
+        .report-card { background: var(--bg-card); border-radius: 16px; padding: 8px 5px; flex: 1; text-align: center; border: 1px solid var(--border); min-width: 70px; }
+        .report-card h3 { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+        .report-card p { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .top-cats { margin: 0 25px; }
-        .top-cat-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border);}
+        .top-cat-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; gap: 10px; }
+        .top-cat-item span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .top-cat-item span:last-child { white-space: nowrap; flex-shrink: 0; }
     </style>
 </head>
 <body>
@@ -156,14 +157,14 @@
                 </div>
             </div>
             <div class="hero-content">
-                <p>Valor total</p>
+                <p>Valor total (acumulado)</p>
                 <h1 id="main-balance">R$ 0,00</h1>
-                <p class="hero-desc">Seu saldo líquido baseado nas receitas e despesas do mês selecionado.</p>
+                <p class="hero-desc">Saldo acumulado desde o início até o mês selecionado.</p>
             </div>
         </div>
         <div class="flow-summary">
-            <div class="flow-box inc"><p>Receitas</p><h4 id="home-inc">R$ 0,00</h4></div>
-            <div class="flow-box exp"><p>Despesas</p><h4 id="home-exp">R$ 0,00</h4></div>
+            <div class="flow-box inc"><p>Receitas do mês</p><h4 id="home-inc">R$ 0,00</h4></div>
+            <div class="flow-box exp"><p>Despesas do mês</p><h4 id="home-exp">R$ 0,00</h4></div>
         </div>
         <div style="padding: 0 25px; margin-bottom:5px; font-size: 11px; color: var(--text-muted); display:flex; justify-content:space-between;">
             <span>Orçamento Gasto</span><span id="budget-text">Defina no Perfil</span>
@@ -176,7 +177,7 @@
         </div>
     </div>
 
-    <!-- TELA 2: HISTÓRICO -->
+    <!-- TELA 2: HISTÓRICO (FILTROS CORRIGIDOS) -->
     <div id="screen-history" class="screen">
         <div class="page-header" style="padding-bottom: 10px; justify-content: center;">
             <div class="month-selector">
@@ -191,10 +192,16 @@
         </div>
         <div class="filter-scroll">
             <select id="filter-type" onchange="applyFilters()">
-                <option value="all">Todos os Tipos</option><option value="income">Só Receitas</option><option value="expense">Só Despesas</option>
+                <option value="all">Todos os Tipos</option>
+                <option value="income">Só Receitas</option>
+                <option value="expense">Só Despesas</option>
             </select>
-            <select id="filter-account" onchange="applyFilters()"><option value="all">Todas as Contas</option></select>
-            <select id="filter-category" onchange="applyFilters()"><option value="all">Todas as Categorias</option></select>
+            <select id="filter-account" onchange="applyFilters()">
+                <option value="all">Todas as Contas</option>
+            </select>
+            <select id="filter-category" onchange="applyFilters()">
+                <option value="all">Todas as Categorias</option>
+            </select>
         </div>
         <div class="list-area" id="full-t-list"></div>
     </div>
@@ -244,15 +251,15 @@
             </div>
             <div id="date-custom-day" class="date-custom">
                 <input type="date" id="custom-day">
-                <button class="btn-pill btn-a2" style="padding: 8px 15px;" onclick="updateReports()">Filtrar</button>
+                <button class="btn-pill btn-a2" style="padding: 6px 12px; font-size:12px;" onclick="updateReports()">Filtrar</button>
             </div>
             <div id="date-custom-month" class="date-custom">
                 <input type="month" id="custom-month">
-                <button class="btn-pill btn-a2" style="padding: 8px 15px;" onclick="updateReports()">Filtrar</button>
+                <button class="btn-pill btn-a2" style="padding: 6px 12px; font-size:12px;" onclick="updateReports()">Filtrar</button>
             </div>
             <div id="date-custom-year" class="date-custom">
-                <input type="number" id="custom-year" placeholder="Ano" step="1" style="width:100px;">
-                <button class="btn-pill btn-a2" style="padding: 8px 15px;" onclick="updateReports()">Filtrar</button>
+                <input type="number" id="custom-year" placeholder="Ano" step="1" style="width:90px;">
+                <button class="btn-pill btn-a2" style="padding: 6px 12px; font-size:12px;" onclick="updateReports()">Filtrar</button>
             </div>
         </div>
         <div class="report-summary">
@@ -326,7 +333,7 @@
         </div>
     </div>
 
-    <!-- BOTTOM NAV (apenas ícones) -->
+    <!-- BOTTOM NAV -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="switchTab('home', this)"><i class="fas fa-wallet"></i></div>
         <div class="nav-item" onclick="switchTab('history', this)"><i class="fas fa-list-alt"></i></div>
@@ -335,24 +342,41 @@
         <div class="nav-item" onclick="switchTab('profile', this)"><i class="fas fa-cog"></i></div>
     </div>
 
-    <!-- SUB-TELAS (modais) -->
+    <!-- SUB-TELAS -->
     <div id="sub-add-trans" class="sub-screen">
         <div class="page-header"><button class="back-btn" onclick="closeSubScreen('sub-add-trans')"><i class="fas fa-arrow-left"></i></button><div class="title-box"><h1 id="trans-modal-title">Transação</h1></div><div style="width:20px;"></div></div>
         <form class="form-area" id="form-add-trans">
-            <input type="hidden" id="trans-id"><input type="hidden" id="trans-type">
+            <input type="hidden" id="trans-id">
+            <input type="hidden" id="trans-type">
+            <input type="hidden" id="edit-group-id">
             <div style="text-align:center;"><p>Valor (R$)</p><input type="number" id="trans-amount" class="input-huge" step="0.01" required></div>
             <div class="form-group"><label>Conta</label><select id="trans-account" required></select></div>
             <div style="display:flex; gap:10px;"><div class="form-group" style="flex:1;"><label>Categoria</label><select id="trans-category" onchange="updateSubcategories()" required></select></div><div class="form-group" style="flex:1;"><label>Subcategoria</label><select id="trans-subcategory" required></select></div></div>
             <div class="form-group"><label>Descrição</label><input type="text" id="trans-desc" required></div>
-            <div class="form-group"><label>Data</label><input type="date" id="trans-date" required></div>
-            <div class="installment-group" id="installment-group-expense"><label class="checkbox-label"><input type="checkbox" id="is-installment"> Parcelado</label><div id="installment-details" class="installment-details"><div class="form-group"><label>Parcelas</label><input type="number" id="installments-count" min="2" max="24" value="2"></div></div></div>
-            <button type="submit" class="btn-pill btn-a2">Salvar</button>
+            <div class="form-group"><label>Data da primeira parcela</label><input type="date" id="trans-date" required></div>
+            <div class="installment-group" id="installment-group-expense">
+                <label class="checkbox-label"><input type="checkbox" id="is-installment"> <i class="fas fa-credit-card"></i> Parcelado</label>
+                <div id="installment-details" class="installment-details">
+                    <div class="form-group" style="flex:1; margin-bottom:0;"><label>Nº de parcelas</label><input type="number" id="installments-count" min="2" max="24" value="2"></div>
+                    <span style="font-size:12px;">O valor total será dividido</span>
+                </div>
+            </div>
+            <div class="recurring-group" id="recurring-group-income">
+                <label class="checkbox-label"><input type="checkbox" id="is-recurring"> <i class="fas fa-sync-alt"></i> Recorrente (ex: salário)</label>
+                <div id="recurring-details" class="recurring-details">
+                    <div class="form-group" style="flex:1; margin-bottom:0;"><label>Nº de repetições (meses)</label><input type="number" id="recurring-count" min="2" max="120" value="12"></div>
+                    <span style="font-size:12px;">Criará uma receita para cada mês</span>
+                </div>
+            </div>
+            <button type="submit" class="btn-pill btn-a2" style="width:100%; margin-top:10px;">Salvar</button>
         </form>
     </div>
+
     <div id="sub-add-account" class="sub-screen">
         <div class="page-header"><button class="back-btn" onclick="closeSubScreen('sub-add-account')"><i class="fas fa-arrow-left"></i></button><div class="title-box"><h1>Conta/Cartão</h1></div><div style="width:20px;"></div></div>
         <form class="form-area" id="form-add-acc"><input type="hidden" id="acc-id"><div class="form-group"><label>Nome</label><input type="text" id="acc-name" required></div><div class="form-group"><label>Tipo</label><select id="acc-type"><option value="bank">Conta/Dinheiro</option><option value="credit">Cartão de Crédito</option></select></div><div class="form-group"><label>Limite</label><input type="number" id="acc-limit" placeholder="Opcional"></div><div class="form-group"><label>Cor</label><input type="color" id="acc-color" value="#8b5cf6"></div><button type="submit" class="btn-pill btn-a1">Salvar</button></form>
     </div>
+
     <div id="sub-add-category" class="sub-screen">
         <div class="page-header"><button class="back-btn" onclick="closeSubScreen('sub-add-category')"><i class="fas fa-arrow-left"></i></button><div class="title-box"><h1 id="cat-modal-title">Categoria</h1></div><div style="width:20px;"></div></div>
         <form class="form-area" id="form-add-cat"><input type="hidden" id="cat-edit-type"><input type="hidden" id="cat-edit-name-original"><div class="form-group"><label>Tipo</label><select id="cat-type"><option value="expense">Despesa</option><option value="income">Receita</option></select></div><div class="form-group"><label>Nome</label><input type="text" id="cat-name" required></div><div class="form-group"><label>Subcategorias (vírgula)</label><input type="text" id="cat-subs" placeholder="Ex: Uber, Ônibus" required></div><label>Ícone</label><input type="hidden" id="cat-icon" value="fa-star"><div class="icon-grid" id="icon-picker"></div><button type="submit" class="btn-pill btn-a2">Salvar</button></form>
@@ -379,14 +403,27 @@
 
     // ========== PARCELAMENTO ==========
     function createInstallments(data) {
-        const { type, accountId, category, subcategory, desc, totalAmount, installmentsCount, firstDate } = data;
+        const { type, accountId, category, subcategory, desc, totalAmount, installmentsCount, firstDate, oldGroupId } = data;
         const installmentValue = totalAmount / installmentsCount;
-        const groupId = generateId();
+        const groupId = oldGroupId || generateId();
         let arr = [];
         for (let i=0; i<installmentsCount; i++) {
             let d = new Date(firstDate);
             d.setMonth(d.getMonth() + i);
-            arr.push({ id: generateId(), type, accountId, category, subcategory, desc: `${desc} (Parcela ${i+1}/${installmentsCount})`, date: d.toISOString().slice(0,10), amount: parseFloat(installmentValue.toFixed(2)), groupId });
+            arr.push({ id: generateId(), type, accountId, category, subcategory, desc: `${desc} (Parcela ${i+1}/${installmentsCount})`, date: d.toISOString().slice(0,10), amount: parseFloat(installmentValue.toFixed(2)), groupId, isInstallment: true });
+        }
+        return arr;
+    }
+
+    // ========== RECEITA RECORRENTE ==========
+    function createRecurringIncome(data) {
+        const { type, accountId, category, subcategory, desc, monthlyAmount, repetitions, firstDate, oldGroupId } = data;
+        const groupId = oldGroupId || generateId();
+        let arr = [];
+        for (let i=0; i<repetitions; i++) {
+            let d = new Date(firstDate);
+            d.setMonth(d.getMonth() + i);
+            arr.push({ id: generateId(), type, accountId, category, subcategory, desc: `${desc} (Recorrente ${i+1}/${repetitions})`, date: d.toISOString().slice(0,10), amount: parseFloat(monthlyAmount), groupId, isRecurring: true });
         }
         return arr;
     }
@@ -404,6 +441,23 @@
         renderSettingsAccounts();
     }
 
+    // ========== SALDO ACUMULADO ==========
+    function getAccumulatedBalance(month, year) {
+        let total = 0;
+        const endDate = new Date(year, month, 1);
+        endDate.setMonth(endDate.getMonth() + 1);
+        endDate.setDate(0);
+        endDate.setHours(23, 59, 59, 999);
+        for (let t of transactions) {
+            const transDate = new Date(t.date);
+            if (transDate <= endDate) {
+                if (t.type === 'income') total += t.amount;
+                else total -= t.amount;
+            }
+        }
+        return total;
+    }
+
     // ========== RENDER CARTÕES ==========
     function renderAccounts(mData) {
         const container = document.getElementById('accounts-container');
@@ -411,7 +465,7 @@
         accounts.forEach((acc, i) => {
             const aTrans = mData.filter(t => t.accountId === acc.id);
             const bal = aTrans.reduce((a,t) => t.type === 'income' ? a + t.amount : a - t.amount, 0);
-            const title = acc.type === 'credit' ? 'Fatura Atual' : 'Saldo';
+            const title = acc.type === 'credit' ? 'Fatura Atual' : 'Saldo do mês';
             const displayBal = acc.type === 'credit' ? formatMoney(Math.abs(bal)) : formatMoney(bal);
             const limInfo = acc.limit ? `<p style="font-size:10px;">Limite: ${formatMoney(acc.limit)}</p>` : '';
             let bgColor = acc.color ? acc.color : (profile.mode === 'dark' ? '#1c1f2e' : '#ffffff');
@@ -432,188 +486,138 @@
         list.innerHTML = '';
         accounts.forEach(acc => {
             const typeName = acc.type === 'credit' ? 'Cartão de Crédito' : 'Conta/Dinheiro';
-            list.innerHTML += `
-                <div class="config-list-item">
-                    <div class="config-item-info">
-                        <div class="config-item-title">${acc.name}</div>
-                        <div class="config-item-sub">${typeName}</div>
-                    </div>
-                    <div class="config-item-actions">
-                        <button class="edit-btn" onclick="openEditAccountForm('${acc.id}')"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteAccount('${acc.id}')"><i class="fas fa-trash"></i></button>
-                    </div>
-                </div>
-            `;
+            list.innerHTML += `<div class="config-list-item"><div class="config-item-info"><div class="config-item-title">${acc.name}</div><div class="config-item-sub">${typeName}</div></div><div class="config-item-actions"><button class="edit-btn" onclick="openEditAccountForm('${acc.id}')"><i class="fas fa-edit"></i></button><button class="delete-btn" onclick="deleteAccount('${acc.id}')"><i class="fas fa-trash"></i></button></div></div>`;
         });
     }
+    function openAddAccountForm() { document.getElementById('form-add-acc').reset(); document.getElementById('acc-id').value = ''; document.getElementById('acc-color').value = '#8b5cf6'; openSubScreen('sub-add-account'); }
+    function openEditAccountForm(id) { const acc = accounts.find(a => a.id === id); if(acc){ document.getElementById('acc-id').value = acc.id; document.getElementById('acc-name').value = acc.name; document.getElementById('acc-type').value = acc.type; document.getElementById('acc-limit').value = acc.limit||''; document.getElementById('acc-color').value = acc.color||'#8b5cf6'; openSubScreen('sub-add-account'); } }
+    document.getElementById('form-add-acc').addEventListener('submit', (e) => { e.preventDefault(); const id = document.getElementById('acc-id').value; const obj = { id: id||Date.now().toString(), name: document.getElementById('acc-name').value, type: document.getElementById('acc-type').value, limit: parseFloat(document.getElementById('acc-limit').value)||null, color: document.getElementById('acc-color').value }; if(id) accounts[accounts.findIndex(x=>x.id===id)]=obj; else accounts.push(obj); saveData(); closeSubScreen('sub-add-account'); });
+    function deleteAccount(id) { if(accounts.length===1) return alert("Mantenha pelo menos uma conta."); if(confirm("Excluir esta conta? O histórico continuará salvo, mas perderá o vínculo com a conta.")) { accounts=accounts.filter(a=>a.id!==id); saveData(); } }
 
-    function openAddAccountForm() {
-        document.getElementById('form-add-acc').reset();
-        document.getElementById('acc-id').value = '';
-        document.getElementById('acc-color').value = '#8b5cf6';
-        openSubScreen('sub-add-account');
-    }
-
-    function openEditAccountForm(id) {
-        const acc = accounts.find(a => a.id === id);
-        if (!acc) return;
-        document.getElementById('acc-id').value = acc.id;
-        document.getElementById('acc-name').value = acc.name;
-        document.getElementById('acc-type').value = acc.type;
-        document.getElementById('acc-limit').value = acc.limit || '';
-        document.getElementById('acc-color').value = acc.color || '#8b5cf6';
-        openSubScreen('sub-add-account');
-    }
-
-    document.getElementById('form-add-acc').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const id = document.getElementById('acc-id').value;
-        const obj = {
-            id: id || Date.now().toString(),
-            name: document.getElementById('acc-name').value,
-            type: document.getElementById('acc-type').value,
-            limit: parseFloat(document.getElementById('acc-limit').value) || null,
-            color: document.getElementById('acc-color').value
-        };
-        if (id) accounts[accounts.findIndex(x => x.id === id)] = obj;
-        else accounts.push(obj);
-        saveData();
-        closeSubScreen('sub-add-account');
-    });
-
-    function deleteAccount(id) {
-        if (accounts.length === 1) return alert("Mantenha pelo menos uma conta.");
-        if (confirm("Excluir esta conta? O histórico continuará salvo, mas perderá o vínculo com a conta.")) {
-            accounts = accounts.filter(a => a.id !== id);
-            saveData();
-        }
-    }
-
-    // ========== CONFIGURAÇÕES: CATEGORIAS ==========
+    // ========== CATEGORIAS ==========
     function renderCategoriesList() {
         const container = document.getElementById('categories-list-container');
-        if (!container) return;
+        if(!container) return;
         container.innerHTML = '';
-        const allCats = [
-            ...Object.keys(categories.expense).map(c => ({ type: 'expense', name: c, data: categories.expense[c] })),
-            ...Object.keys(categories.income).map(c => ({ type: 'income', name: c, data: categories.income[c] }))
-        ];
-        allCats.forEach(cat => {
-            const typeLabel = cat.type === 'expense' ? 'Despesa' : 'Receita';
-            const subsText = cat.data.subs.join(', ');
-            container.innerHTML += `
-                <div class="config-list-item">
-                    <div class="config-item-info">
-                        <div class="config-item-title">${cat.name} (${typeLabel})</div>
-                        <div class="config-item-sub">Sub: ${subsText}</div>
-                    </div>
-                    <div class="config-item-actions">
-                        <button class="edit-btn" onclick="openEditCategoryForm('${cat.type}', '${cat.name}')"><i class="fas fa-edit"></i></button>
-                        <button class="delete-btn" onclick="deleteCategory('${cat.type}', '${cat.name}')"><i class="fas fa-trash"></i></button>
-                    </div>
-                </div>
-            `;
-        });
-        if (allCats.length === 0) container.innerHTML = '<p style="text-align:center; color:var(--text-muted);">Nenhuma categoria criada</p>';
+        const allCats = [...Object.keys(categories.expense).map(c=>({type:'expense',name:c,data:categories.expense[c]})), ...Object.keys(categories.income).map(c=>({type:'income',name:c,data:categories.income[c]}))];
+        allCats.forEach(cat => { const typeLabel = cat.type === 'expense' ? 'Despesa' : 'Receita'; const subsText = cat.data.subs.join(', '); container.innerHTML += `<div class="config-list-item"><div class="config-item-info"><div class="config-item-title">${cat.name} (${typeLabel})</div><div class="config-item-sub">Sub: ${subsText}</div></div><div class="config-item-actions"><button class="edit-btn" onclick="openEditCategoryForm('${cat.type}', '${cat.name}')"><i class="fas fa-edit"></i></button><button class="delete-btn" onclick="deleteCategory('${cat.type}', '${cat.name}')"><i class="fas fa-trash"></i></button></div></div>`; });
+        if(allCats.length===0) container.innerHTML='<p style="text-align:center; color:var(--text-muted);">Nenhuma categoria criada</p>';
     }
-
-    function openAddCategoryForm() {
-        document.getElementById('form-add-cat').reset();
-        document.getElementById('cat-edit-type').value = '';
-        document.getElementById('cat-edit-name-original').value = '';
-        document.getElementById('cat-modal-title').innerText = 'Nova Categoria';
-        document.getElementById('cat-icon').value = 'fa-star';
-        document.querySelectorAll('.icon-opt').forEach(el => el.classList.remove('selected'));
-        if (document.querySelector('.icon-opt')) document.querySelector('.icon-opt').classList.add('selected');
-        openSubScreen('sub-add-category');
-    }
-
-    function openEditCategoryForm(type, name) {
-        const catData = categories[type][name];
-        if (!catData) return;
-        document.getElementById('cat-edit-type').value = type;
-        document.getElementById('cat-edit-name-original').value = name;
-        document.getElementById('cat-type').value = type;
-        document.getElementById('cat-name').value = name;
-        document.getElementById('cat-subs').value = catData.subs.join(', ');
-        document.getElementById('cat-icon').value = catData.icon;
-        document.querySelectorAll('.icon-opt').forEach(el => {
-            const ic = el.querySelector('i')?.classList[1];
-            if (ic === catData.icon) el.classList.add('selected');
-            else el.classList.remove('selected');
-        });
-        document.getElementById('cat-modal-title').innerText = 'Editar Categoria';
-        openSubScreen('sub-add-category');
-    }
-
-    function deleteCategory(type, name) {
-        if (defaultCategories[type] && defaultCategories[type][name]) {
-            alert("Categoria padrão não pode ser excluída.");
-            return;
-        }
-        if (confirm(`Excluir a categoria "${name}"? Todas as transações com esta categoria serão mantidas, mas perderão a referência visual.`)) {
-            delete userCategories[type][name];
-            saveData();
-        }
-    }
-
-    document.getElementById('form-add-cat').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const editType = document.getElementById('cat-edit-type').value;
-        const originalName = document.getElementById('cat-edit-name-original').value;
-        const type = document.getElementById('cat-type').value;
-        let name = document.getElementById('cat-name').value.trim();
-        if (!name) return alert("Nome da categoria é obrigatório");
-        const subs = document.getElementById('cat-subs').value.split(',').map(s => s.trim()).filter(s => s);
-        if (subs.length === 0) return alert("Pelo menos uma subcategoria é necessária");
-        const icon = document.getElementById('cat-icon').value;
-        if (editType && originalName && (defaultCategories[editType] && defaultCategories[editType][originalName])) {
-            // Permite editar categoria padrão: cria uma versão personalizada (sobrescreve userCategories)
-            if (originalName !== name) {
-                delete userCategories[editType][originalName];
-            }
-        } else if (editType && originalName) {
-            delete userCategories[editType][originalName];
-        }
-        userCategories[type][name] = { icon, subs };
-        saveData();
-        closeSubScreen('sub-add-category');
-        alert("Categoria salva!");
-    });
+    function openAddCategoryForm() { document.getElementById('form-add-cat').reset(); document.getElementById('cat-edit-type').value=''; document.getElementById('cat-edit-name-original').value=''; document.getElementById('cat-modal-title').innerText='Nova Categoria'; document.getElementById('cat-icon').value='fa-star'; document.querySelectorAll('.icon-opt').forEach(el=>el.classList.remove('selected')); if(document.querySelector('.icon-opt')) document.querySelector('.icon-opt').classList.add('selected'); openSubScreen('sub-add-category'); }
+    function openEditCategoryForm(type,name){ const d=categories[type][name]; if(d){ document.getElementById('cat-edit-type').value=type; document.getElementById('cat-edit-name-original').value=name; document.getElementById('cat-type').value=type; document.getElementById('cat-name').value=name; document.getElementById('cat-subs').value=d.subs.join(', '); document.getElementById('cat-icon').value=d.icon; document.querySelectorAll('.icon-opt').forEach(el=>{ const ic=el.querySelector('i')?.classList[1]; if(ic===d.icon) el.classList.add('selected'); else el.classList.remove('selected'); }); document.getElementById('cat-modal-title').innerText='Editar Categoria'; openSubScreen('sub-add-category'); } }
+    function deleteCategory(type,name){ if(defaultCategories[type] && defaultCategories[type][name]) return alert("Categoria padrão não pode ser excluída."); if(confirm(`Excluir a categoria "${name}"? Todas as transações com esta categoria serão mantidas, mas perderão a referência visual.`)){ delete userCategories[type][name]; saveData(); } }
+    document.getElementById('form-add-cat').addEventListener('submit',(e)=>{ e.preventDefault(); const editType=document.getElementById('cat-edit-type').value; const originalName=document.getElementById('cat-edit-name-original').value; const type=document.getElementById('cat-type').value; let name=document.getElementById('cat-name').value.trim(); if(!name) return alert("Nome da categoria é obrigatório"); const subs=document.getElementById('cat-subs').value.split(',').map(s=>s.trim()).filter(s=>s); if(subs.length===0) return alert("Pelo menos uma subcategoria é necessária"); const icon=document.getElementById('cat-icon').value; if(editType && originalName && (defaultCategories[editType] && defaultCategories[editType][originalName])){ if(originalName!==name) delete userCategories[editType][originalName]; } else if(editType && originalName){ delete userCategories[editType][originalName]; } userCategories[type][name]={icon,subs}; saveData(); closeSubScreen('sub-add-category'); alert("Categoria salva!"); });
 
     // ========== TRANSAÇÕES ==========
     function openAddTransForm(type) {
         document.getElementById('form-add-trans').reset();
         document.getElementById('trans-id').value = '';
+        document.getElementById('edit-group-id').value = '';
         document.getElementById('trans-modal-title').innerText = type === 'income' ? 'Nova Receita' : 'Nova Despesa';
         document.getElementById('trans-type').value = type;
         document.getElementById('trans-date').valueAsDate = new Date();
-        const grp = document.getElementById('installment-group-expense');
-        grp.style.display = type === 'expense' ? 'block' : 'none';
-        document.getElementById('is-installment').checked = false;
-        document.getElementById('installment-details').classList.remove('show');
-        const sel = document.getElementById('trans-account');
-        sel.innerHTML = '';
-        accounts.forEach(a => sel.innerHTML += `<option value="${a.id}">${a.name}</option>`);
-        if (!accounts.length) return alert('Crie uma conta primeiro.');
+        const installmentGroup = document.getElementById('installment-group-expense');
+        const recurringGroup = document.getElementById('recurring-group-income');
+        if (type === 'expense') {
+            installmentGroup.style.display = 'block';
+            recurringGroup.style.display = 'none';
+            document.getElementById('is-installment').checked = false;
+            document.getElementById('installment-details').classList.remove('show');
+        } else {
+            installmentGroup.style.display = 'none';
+            recurringGroup.style.display = 'block';
+            document.getElementById('is-recurring').checked = false;
+            document.getElementById('recurring-details').classList.remove('show');
+        }
+        const aSel = document.getElementById('trans-account');
+        aSel.innerHTML = '';
+        accounts.forEach(a => aSel.innerHTML += `<option value="${a.id}">${a.name}</option>`);
+        if(!accounts.length) return alert('Crie uma conta primeiro.');
         updateSelects();
+        openSubScreen('sub-add-trans');
+    }
+
+    function editInstallmentGroup(groupId) {
+        const groupTrans = transactions.filter(t => t.groupId === groupId && t.type === 'expense');
+        if (groupTrans.length === 0) return;
+        groupTrans.sort((a,b) => new Date(a.date) - new Date(b.date));
+        const first = groupTrans[0];
+        const totalAmount = groupTrans.reduce((sum, t) => sum + t.amount, 0);
+        const installmentsCount = groupTrans.length;
+        let cleanDesc = first.desc.replace(/ \(Parcela \d+\/\d+\)$/, '');
+        
+        document.getElementById('form-add-trans').reset();
+        document.getElementById('trans-id').value = '';
+        document.getElementById('edit-group-id').value = groupId;
+        document.getElementById('trans-modal-title').innerText = 'Editar Compra Parcelada';
+        document.getElementById('trans-type').value = 'expense';
+        document.getElementById('trans-amount').value = totalAmount;
+        document.getElementById('trans-desc').value = cleanDesc;
+        document.getElementById('trans-date').value = first.date;
+        const aSel = document.getElementById('trans-account');
+        aSel.innerHTML = '';
+        accounts.forEach(a => aSel.innerHTML += `<option value="${a.id}">${a.name}</option>`);
+        aSel.value = first.accountId;
+        updateSelects();
+        setTimeout(() => {
+            document.getElementById('trans-category').value = first.category;
+            updateSubcategories();
+            setTimeout(() => document.getElementById('trans-subcategory').value = first.subcategory, 10);
+        }, 10);
+        const installmentGroupDiv = document.getElementById('installment-group-expense');
+        installmentGroupDiv.style.display = 'block';
+        document.getElementById('recurring-group-income').style.display = 'none';
+        document.getElementById('is-installment').checked = true;
+        document.getElementById('installment-details').classList.add('show');
+        document.getElementById('installments-count').value = installmentsCount;
         openSubScreen('sub-add-trans');
     }
 
     function openEditTransForm(id) {
         const t = transactions.find(x => x.id === id);
         if (!t) return;
-        if (t.groupId) return alert("Parcela de compra parcelada. Exclua a série para editar.");
+        if (t.type === 'expense' && t.groupId && t.isInstallment) {
+            editInstallmentGroup(t.groupId);
+            return;
+        }
+        if (t.type === 'income' && t.groupId && t.isRecurring) {
+            document.getElementById('form-add-trans').reset();
+            document.getElementById('trans-id').value = t.id;
+            document.getElementById('edit-group-id').value = '';
+            document.getElementById('trans-modal-title').innerText = 'Editar Receita Recorrente (individual)';
+            document.getElementById('trans-type').value = t.type;
+            document.getElementById('trans-amount').value = t.amount;
+            let cleanDesc = t.desc.replace(/ \(Recorrente \d+\/\d+\)$/, '');
+            document.getElementById('trans-desc').value = cleanDesc;
+            document.getElementById('trans-date').value = t.date;
+            const aSel = document.getElementById('trans-account');
+            aSel.innerHTML = '';
+            accounts.forEach(a => aSel.innerHTML += `<option value="${a.id}">${a.name}</option>`);
+            aSel.value = t.accountId;
+            updateSelects();
+            setTimeout(() => {
+                document.getElementById('trans-category').value = t.category;
+                updateSubcategories();
+                setTimeout(() => document.getElementById('trans-subcategory').value = t.subcategory, 10);
+            }, 10);
+            document.getElementById('installment-group-expense').style.display = 'none';
+            document.getElementById('recurring-group-income').style.display = 'none';
+            openSubScreen('sub-add-trans');
+            return;
+        }
+        // Transação única
         document.getElementById('form-add-trans').reset();
         document.getElementById('trans-id').value = t.id;
-        document.getElementById('trans-amount').value = t.amount;
+        document.getElementById('edit-group-id').value = '';
+        document.getElementById('trans-modal-title').innerText = 'Editar Transação';
         document.getElementById('trans-type').value = t.type;
+        document.getElementById('trans-amount').value = t.amount;
         document.getElementById('trans-desc').value = t.desc;
         document.getElementById('trans-date').value = t.date;
-        const sel = document.getElementById('trans-account');
-        sel.innerHTML = '';
-        accounts.forEach(a => sel.innerHTML += `<option value="${a.id}">${a.name}</option>`);
-        sel.value = t.accountId;
+        const aSel = document.getElementById('trans-account');
+        aSel.innerHTML = '';
+        accounts.forEach(a => aSel.innerHTML += `<option value="${a.id}">${a.name}</option>`);
+        aSel.value = t.accountId;
         updateSelects();
         setTimeout(() => {
             document.getElementById('trans-category').value = t.category;
@@ -621,20 +625,50 @@
             setTimeout(() => document.getElementById('trans-subcategory').value = t.subcategory, 10);
         }, 10);
         document.getElementById('installment-group-expense').style.display = 'none';
+        document.getElementById('recurring-group-income').style.display = 'none';
         openSubScreen('sub-add-trans');
     }
 
     document.getElementById('form-add-trans').addEventListener('submit', (e) => {
         e.preventDefault();
         const idEdit = document.getElementById('trans-id').value;
+        const editGroupId = document.getElementById('edit-group-id').value;
         const type = document.getElementById('trans-type').value;
-        const isInstall = document.getElementById('is-installment').checked && type === 'expense';
+        const amount = parseFloat(document.getElementById('trans-amount').value);
+        if (isNaN(amount) || amount <= 0) return alert("Valor inválido");
+
+        if (editGroupId) {
+            const installmentsCount = parseInt(document.getElementById('installments-count').value);
+            if (installmentsCount < 2) return alert("Número de parcelas deve ser no mínimo 2");
+            const firstDate = new Date(document.getElementById('trans-date').value);
+            const newInstallments = createInstallments({
+                type: 'expense',
+                accountId: document.getElementById('trans-account').value,
+                category: document.getElementById('trans-category').value,
+                subcategory: document.getElementById('trans-subcategory').value,
+                desc: document.getElementById('trans-desc').value,
+                totalAmount: amount,
+                installmentsCount: installmentsCount,
+                firstDate: firstDate,
+                oldGroupId: editGroupId
+            });
+            transactions = transactions.filter(t => t.groupId !== editGroupId);
+            transactions.push(...newInstallments);
+            saveData();
+            closeSubScreen('sub-add-trans');
+            return;
+        }
+
         if (idEdit) {
             const obj = {
-                id: parseInt(idEdit), type, accountId: document.getElementById('trans-account').value,
-                category: document.getElementById('trans-category').value, subcategory: document.getElementById('trans-subcategory').value,
-                desc: document.getElementById('trans-desc').value, date: document.getElementById('trans-date').value,
-                amount: parseFloat(document.getElementById('trans-amount').value)
+                id: parseInt(idEdit),
+                type: type,
+                accountId: document.getElementById('trans-account').value,
+                category: document.getElementById('trans-category').value,
+                subcategory: document.getElementById('trans-subcategory').value,
+                desc: document.getElementById('trans-desc').value,
+                date: document.getElementById('trans-date').value,
+                amount: amount
             };
             const idx = transactions.findIndex(x => x.id === parseInt(idEdit));
             if (idx !== -1) transactions[idx] = obj;
@@ -642,28 +676,74 @@
             closeSubScreen('sub-add-trans');
             return;
         }
-        const amount = parseFloat(document.getElementById('trans-amount').value);
-        if (isNaN(amount) || amount <= 0) return alert("Valor inválido");
-        if (type === 'income' || !isInstall) {
-            transactions.push({
-                id: generateId(), type, accountId: document.getElementById('trans-account').value,
-                category: document.getElementById('trans-category').value, subcategory: document.getElementById('trans-subcategory').value,
-                desc: document.getElementById('trans-desc').value, date: document.getElementById('trans-date').value, amount
-            });
-            saveData();
-            closeSubScreen('sub-add-trans');
+
+        // Nova transação
+        if (type === 'expense') {
+            const isInstallment = document.getElementById('is-installment').checked;
+            if (isInstallment) {
+                const parcels = parseInt(document.getElementById('installments-count').value);
+                if (parcels < 2) return alert("Mínimo 2 parcelas");
+                const firstDate = new Date(document.getElementById('trans-date').value);
+                const newP = createInstallments({
+                    type: 'expense',
+                    accountId: document.getElementById('trans-account').value,
+                    category: document.getElementById('trans-category').value,
+                    subcategory: document.getElementById('trans-subcategory').value,
+                    desc: document.getElementById('trans-desc').value,
+                    totalAmount: amount,
+                    installmentsCount: parcels,
+                    firstDate
+                });
+                transactions.push(...newP);
+                saveData();
+                closeSubScreen('sub-add-trans');
+            } else {
+                transactions.push({
+                    id: generateId(),
+                    type: 'expense',
+                    accountId: document.getElementById('trans-account').value,
+                    category: document.getElementById('trans-category').value,
+                    subcategory: document.getElementById('trans-subcategory').value,
+                    desc: document.getElementById('trans-desc').value,
+                    date: document.getElementById('trans-date').value,
+                    amount: amount
+                });
+                saveData();
+                closeSubScreen('sub-add-trans');
+            }
         } else {
-            const parcels = parseInt(document.getElementById('installments-count').value);
-            if (parcels < 2) return alert("Mínimo 2 parcelas");
-            const firstDate = new Date(document.getElementById('trans-date').value);
-            const newP = createInstallments({
-                type: 'expense', accountId: document.getElementById('trans-account').value,
-                category: document.getElementById('trans-category').value, subcategory: document.getElementById('trans-subcategory').value,
-                desc: document.getElementById('trans-desc').value, totalAmount: amount, installmentsCount: parcels, firstDate
-            });
-            transactions.push(...newP);
-            saveData();
-            closeSubScreen('sub-add-trans');
+            const isRecurring = document.getElementById('is-recurring').checked;
+            if (isRecurring) {
+                const repetitions = parseInt(document.getElementById('recurring-count').value);
+                if (repetitions < 2) return alert("Mínimo 2 repetições");
+                const firstDate = new Date(document.getElementById('trans-date').value);
+                const newRecurring = createRecurringIncome({
+                    type: 'income',
+                    accountId: document.getElementById('trans-account').value,
+                    category: document.getElementById('trans-category').value,
+                    subcategory: document.getElementById('trans-subcategory').value,
+                    desc: document.getElementById('trans-desc').value,
+                    monthlyAmount: amount,
+                    repetitions: repetitions,
+                    firstDate
+                });
+                transactions.push(...newRecurring);
+                saveData();
+                closeSubScreen('sub-add-trans');
+            } else {
+                transactions.push({
+                    id: generateId(),
+                    type: 'income',
+                    accountId: document.getElementById('trans-account').value,
+                    category: document.getElementById('trans-category').value,
+                    subcategory: document.getElementById('trans-subcategory').value,
+                    desc: document.getElementById('trans-desc').value,
+                    date: document.getElementById('trans-date').value,
+                    amount: amount
+                });
+                saveData();
+                closeSubScreen('sub-add-trans');
+            }
         }
     });
 
@@ -672,40 +752,56 @@
         if (this.checked) details.classList.add('show');
         else details.classList.remove('show');
     });
+    document.getElementById('is-recurring').addEventListener('change', function(e) {
+        const details = document.getElementById('recurring-details');
+        if (this.checked) details.classList.add('show');
+        else details.classList.remove('show');
+    });
 
     function deleteTransaction(id) {
         const t = transactions.find(x => x.id === id);
         if (!t) return;
         if (t.groupId) {
-            if (confirm("Apagar todas as parcelas?")) transactions = transactions.filter(x => x.groupId !== t.groupId);
-            else return;
-        } else if (confirm("Apagar transação?")) transactions = transactions.filter(x => x.id !== id);
-        else return;
+            const isInstallmentGroup = t.isInstallment === true;
+            const groupTrans = transactions.filter(x => x.groupId === t.groupId);
+            const msg = isInstallmentGroup 
+                ? `Esta é uma parcela de uma compra parcelada (${groupTrans.length} parcelas). Deseja excluir TODAS as parcelas?`
+                : `Esta é uma receita recorrente (${groupTrans.length} repetições). Deseja excluir TODAS as repetições?`;
+            if (confirm(msg)) {
+                transactions = transactions.filter(x => x.groupId !== t.groupId);
+            } else {
+                return;
+            }
+        } else {
+            if (!confirm("Apagar esta transação?")) return;
+            transactions = transactions.filter(x => x.id !== id);
+        }
         saveData();
     }
 
     // ========== FUNÇÕES AUXILIARES ==========
     function formatMoney(v) { return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); }
-    function changeTheme() { profile.mode = document.getElementById('p-mode').value; profile.accent = document.getElementById('p-accent').value; saveData(); applySavedTheme(); }
-    function applySavedTheme() { document.documentElement.setAttribute('data-theme', profile.mode); document.documentElement.setAttribute('data-accent', profile.accent); Chart.defaults.color = profile.mode === 'dark' ? '#8b92a5' : '#6b7280'; if (document.getElementById('screen-stats').classList.contains('active')) renderCharts(transactions, currentDate.getFullYear()); if (document.getElementById('screen-reports').classList.contains('active')) updateReports(); }
-    function handleImageUpload(e) { const file = e.target.files[0]; if (!file) return; const r = new FileReader(); r.onload = ev => { profile.image = ev.target.result; saveData(); updateProfilePic(); }; r.readAsDataURL(file); }
-    function updateProfilePic() { const init = profile.name.charAt(0).toUpperCase(); const content = profile.image ? `<img src="${profile.image}">` : init; document.getElementById('hm-avatar').innerHTML = content; document.getElementById('pf-avatar').innerHTML = content; document.getElementById('hero-name').innerText = profile.name.split(' ')[0]; }
-    function saveProfile() { profile.name = document.getElementById('p-name').value || 'Visitante'; profile.budget = parseFloat(document.getElementById('p-budget').value) || 0; saveData(); updateProfilePic(); }
-    function switchTab(tabId, el = null) { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById(`screen-${tabId}`).classList.add('active'); if (el) { document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); el.classList.add('active'); } if (tabId === 'stats') setTimeout(() => renderCharts(transactions, currentDate.getFullYear()), 50); else if (tabId === 'reports') updateReports(); else renderUI(); if (tabId === 'profile') { renderCategoriesList(); renderSettingsAccounts(); } }
-    function openSubScreen(id) { document.getElementById(id).classList.add('open'); }
-    function closeSubScreen(id) { document.getElementById(id).classList.remove('open'); }
-    function changeMonth(step) { currentDate.setMonth(currentDate.getMonth() + step); renderUI(); }
-    function renderUI() { const m = currentDate.getMonth(), y = currentDate.getFullYear(); const monthStr = `${monthNames[m]} ${y}`; document.getElementById('home-month').innerText = monthStr; document.getElementById('history-month').innerText = monthStr; const mData = transactions.filter(t => { const d = new Date(t.date); const ld = new Date(d.getTime() + d.getTimezoneOffset() * 60000); return ld.getMonth() === m && ld.getFullYear() === y; }); let inc = 0, exp = 0; mData.forEach(t => t.type === 'income' ? inc += t.amount : exp += t.amount); document.getElementById('main-balance').innerText = formatMoney(inc - exp); document.getElementById('home-inc').innerText = formatMoney(inc); document.getElementById('home-exp').innerText = formatMoney(exp); const bBar = document.getElementById('budget-progress'); if (profile.budget > 0) { let perc = Math.min((exp / profile.budget) * 100, 100); bBar.style.width = `${perc}%`; bBar.style.background = perc >= 90 ? 'var(--red)' : 'var(--accent-2)'; document.getElementById('budget-text').innerText = `${Math.round(perc)}% de ${formatMoney(profile.budget)}`; } else { bBar.style.width = '0%'; document.getElementById('budget-text').innerText = 'Defina no Perfil'; } renderAccounts(mData); applyFilters(); renderSettingsAccounts(); renderCategoriesList(); }
-    function populateFilterOptions() { const accSel = document.getElementById('filter-account'); accSel.innerHTML = '<option value="all">Todas as Contas</option>'; accounts.forEach(a => accSel.innerHTML += `<option value="${a.id}">${a.name}</option>`); const catSel = document.getElementById('filter-category'); catSel.innerHTML = '<option value="all">Todas as Categorias</option>'; Object.keys(categories.expense).concat(Object.keys(categories.income)).forEach(c => catSel.innerHTML += `<option value="${c}">${c}</option>`); }
-    function applyFilters() { const term = document.getElementById('search-input').value.toLowerCase(); const fType = document.getElementById('filter-type').value, fAcc = document.getElementById('filter-account').value, fCat = document.getElementById('filter-category').value; const m = currentDate.getMonth(), y = currentDate.getFullYear(); const mData = transactions.filter(t => { const d = new Date(t.date); const ld = new Date(d.getTime() + d.getTimezoneOffset() * 60000); return ld.getMonth() === m && ld.getFullYear() === y; }); const filtered = mData.filter(t => (t.desc.toLowerCase().includes(term) || t.subcategory.toLowerCase().includes(term)) && (fType === 'all' || t.type === fType) && (fAcc === 'all' || t.accountId === fAcc) && (fCat === 'all' || t.category === fCat)); renderHistoryList(filtered); }
-    function renderHistoryList(data) { const list = document.getElementById('full-t-list'); list.innerHTML = ''; if (!data.length) { list.innerHTML = '<p style="text-align:center;">Nenhuma transação</p>'; return; } data.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach(t => { const isInc = t.type === 'income'; const acc = accounts.find(a => a.id === t.accountId)?.name || '?'; let icon = categories[t.type]?.[t.category]?.icon || 'fa-star'; list.innerHTML += `<div class="list-item"><div class="li-icon"><i class="fas ${icon}"></i></div><div class="li-info"><h4>${t.desc}</h4><p>${t.category} > ${t.subcategory} • ${acc}</p></div><div class="li-right"><span class="li-amount ${isInc ? 'inc' : 'exp'}">${isInc ? '+' : '-'} ${formatMoney(t.amount)}</span><div class="li-actions"><button class="edit" onclick="openEditTransForm(${t.id})"><i class="fas fa-edit"></i></button><button class="del" onclick="deleteTransaction(${t.id})"><i class="fas fa-trash"></i></button></div></div></div>`; }); }
-    function renderCharts(mData, year) { if (!mData || !Array.isArray(mData)) { const m = currentDate.getMonth(), y = currentDate.getFullYear(); mData = transactions.filter(t => { const d = new Date(t.date); const ld = new Date(d.getTime() + d.getTimezoneOffset() * 60000); return ld.getMonth() === m && ld.getFullYear() === y; }); year = y; } const style = getComputedStyle(document.documentElement); const c1 = style.getPropertyValue('--accent-1').trim() || '#8b5cf6', c2 = style.getPropertyValue('--accent-2').trim() || '#00b4d8', cred = style.getPropertyValue('--red').trim() || '#ef4444', cgreen = style.getPropertyValue('--green').trim() || '#10b981'; const ctxL = document.getElementById('lineChart').getContext('2d'); if (lineChart) lineChart.destroy(); const grad = ctxL.createLinearGradient(0, 0, 0, 180); grad.addColorStop(0, c1 + '80'); grad.addColorStop(1, c1 + '00'); let labelsL = [], dataL = []; for (let i = 5; i >= 0; i--) { let m = currentDate.getMonth() - i, y = currentDate.getFullYear(); if (m < 0) { m += 12; y -= 1; } labelsL.push(monthNames[m]); dataL.push(transactions.filter(t => { const ld = new Date(new Date(t.date).getTime() + new Date().getTimezoneOffset() * 60000); return t.type === 'expense' && ld.getMonth() === m && ld.getFullYear() === y; }).reduce((a, t) => a + t.amount, 0)); } lineChart = new Chart(ctxL, { type: 'line', data: { labels: labelsL, datasets: [{ data: dataL, borderColor: c1, borderWidth: 3, tension: 0.4, fill: true, backgroundColor: grad }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } }); const ctxB = document.getElementById('barChart').getContext('2d'); if (barChart) barChart.destroy(); const incY = Array(12).fill(0), expY = Array(12).fill(0); transactions.forEach(t => { const ld = new Date(new Date(t.date).getTime() + new Date().getTimezoneOffset() * 60000); if (ld.getFullYear() === year) t.type === 'income' ? incY[ld.getMonth()] += t.amount : expY[ld.getMonth()] += t.amount; }); const net = incY.reduce((a, b) => a + b, 0) - expY.reduce((a, b) => a + b, 0); document.getElementById('stat-year-net').innerText = formatMoney(net); barChart = new Chart(ctxB, { type: 'bar', data: { labels: monthNames, datasets: [{ label: 'Receitas', data: incY, backgroundColor: cgreen }, { label: 'Despesas', data: expY, backgroundColor: cred }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } } }); const exp = mData.filter(t => t.type === 'expense'); const catData = {}; exp.forEach(t => catData[t.category] = (catData[t.category] || 0) + t.amount); const pieColors = [c1, c2, cgreen, '#fbbf24', cred, '#f472b6']; const leg = document.getElementById('pie-legend'); leg.innerHTML = ''; let idx = 0; Object.keys(catData).forEach(c => { leg.innerHTML += `<div><span style="display:inline-block;width:10px;height:10px;background:${pieColors[idx % pieColors.length]};border-radius:2px;"></span> ${c}</div>`; idx++; }); if (Object.keys(catData).length === 0) leg.innerHTML = 'Sem dados'; const ctxD = document.getElementById('doughnutChart').getContext('2d'); if (doughnutChart) doughnutChart.destroy(); doughnutChart = new Chart(ctxD, { type: 'doughnut', data: { labels: Object.keys(catData), datasets: [{ data: Object.values(catData), backgroundColor: pieColors, borderWidth: 0, cutout: '70%' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } }); const expMonth = exp.reduce((a, t) => a + t.amount, 0); const fill = document.getElementById('stat-budget-fill'), txt = document.getElementById('stat-budget-txt'); if (profile.budget > 0) { const p = Math.min((expMonth / profile.budget) * 100, 100); fill.style.width = p + '%'; fill.style.background = p >= 90 ? cred : c1; txt.innerText = `${formatMoney(expMonth)} / ${formatMoney(profile.budget)}`; } else { fill.style.width = '0%'; txt.innerText = 'Meta não definida'; } }
-    function updateSelects() { const t = document.getElementById('trans-type').value; const cSel = document.getElementById('trans-category'); cSel.innerHTML = ''; Object.keys(categories[t]).forEach(c => cSel.innerHTML += `<option value="${c}">${c}</option>`); updateSubcategories(); }
-    function updateSubcategories() { const t = document.getElementById('trans-type').value, c = document.getElementById('trans-category').value, sSel = document.getElementById('trans-subcategory'); sSel.innerHTML = ''; if (categories[t][c]) categories[t][c].subs.forEach(s => sSel.innerHTML += `<option value="${s}">${s}</option>`); }
-    const iconList = ['fa-shopping-cart', 'fa-utensils', 'fa-car', 'fa-home', 'fa-gamepad', 'fa-pills', 'fa-plane', 'fa-tshirt', 'fa-book', 'fa-heart', 'fa-dog', 'fa-tools', 'fa-bolt', 'fa-wifi', 'fa-coffee', 'fa-baby', 'fa-briefcase', 'fa-gift', 'fa-mobile-alt', 'fa-dumbbell'];
-    function populateIconPicker() { const pk = document.getElementById('icon-picker'); pk.innerHTML = ''; iconList.forEach(ic => { let d = document.createElement('div'); d.className = 'icon-opt'; d.innerHTML = `<i class="fas ${ic}"></i>`; d.onclick = function () { document.querySelectorAll('.icon-opt').forEach(el => el.classList.remove('selected')); this.classList.add('selected'); document.getElementById('cat-icon').value = ic; }; pk.appendChild(d); }); if (pk.firstChild) pk.firstChild.classList.add('selected'); document.getElementById('cat-icon').value = iconList[0]; }
-    function clearAllData() { if (confirm("Apagar TUDO?")) { localStorage.clear(); location.reload(); } }
-    function exportData() { if (!transactions.length) return alert("Sem dados."); let csv = "Data,Tipo,Conta,Categoria,Subcategoria,Descricao,Valor\n"; transactions.forEach(t => { const acc = accounts.find(a => a.id === t.accountId)?.name || 'N/A'; csv += `${t.date},${t.type === 'income' ? 'Receita' : 'Despesa'},${acc},${t.category},${t.subcategory},${t.desc},${t.amount.toString().replace('.', ',')}\n`; }); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = "financas_export.csv"; a.click(); }
+    function formatMoneyCompact(v) { let abs=Math.abs(v); if(abs>=1e6) return 'R$ '+(v/1e6).toFixed(1).replace(/\.0$/,'')+'M'; if(abs>=1e3) return 'R$ '+(v/1e3).toFixed(1).replace(/\.0$/,'')+'K'; return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:0,maximumFractionDigits:0}); }
+    function changeTheme() { profile.mode=document.getElementById('p-mode').value; profile.accent=document.getElementById('p-accent').value; saveData(); applySavedTheme(); }
+    function applySavedTheme() { document.documentElement.setAttribute('data-theme',profile.mode); document.documentElement.setAttribute('data-accent',profile.accent); Chart.defaults.color=profile.mode==='dark'?'#8b92a5':'#6b7280'; if(document.getElementById('screen-stats').classList.contains('active')) renderCharts(transactions,currentDate.getFullYear()); if(document.getElementById('screen-reports').classList.contains('active')) updateReports(); }
+    function handleImageUpload(e) { const file=e.target.files[0]; if(!file) return; const r=new FileReader(); r.onload=ev=>{ profile.image=ev.target.result; saveData(); updateProfilePic(); }; r.readAsDataURL(file); }
+    function updateProfilePic() { const init=profile.name.charAt(0).toUpperCase(); const content=profile.image?`<img src="${profile.image}">`:init; document.getElementById('hm-avatar').innerHTML=content; document.getElementById('pf-avatar').innerHTML=content; document.getElementById('hero-name').innerText=profile.name.split(' ')[0]; }
+    function saveProfile() { profile.name=document.getElementById('p-name').value||'Visitante'; profile.budget=parseFloat(document.getElementById('p-budget').value)||0; saveData(); updateProfilePic(); }
+    function switchTab(tabId,el=null){ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active')); document.getElementById(`screen-${tabId}`).classList.add('active'); if(el){ document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active')); el.classList.add('active'); } if(tabId==='stats') setTimeout(()=>renderCharts(transactions,currentDate.getFullYear()),50); else if(tabId==='reports') updateReports(); else renderUI(); if(tabId==='profile'){ renderCategoriesList(); renderSettingsAccounts(); } }
+    function openSubScreen(id){ document.getElementById(id).classList.add('open'); }
+    function closeSubScreen(id){ document.getElementById(id).classList.remove('open'); }
+    function changeMonth(step){ currentDate.setMonth(currentDate.getMonth()+step); renderUI(); }
+    function renderUI() { const m=currentDate.getMonth(), y=currentDate.getFullYear(); const monthStr=`${monthNames[m]} ${y}`; document.getElementById('home-month').innerText=monthStr; document.getElementById('history-month').innerText=monthStr; const mData=transactions.filter(t=>{ const d=new Date(t.date); const ld=new Date(d.getTime()+d.getTimezoneOffset()*60000); return ld.getMonth()===m && ld.getFullYear()===y; }); let inc=0,exp=0; mData.forEach(t=>t.type==='income'?inc+=t.amount:exp+=t.amount); document.getElementById('home-inc').innerText=formatMoney(inc); document.getElementById('home-exp').innerText=formatMoney(exp); const accumulated=getAccumulatedBalance(m,y); document.getElementById('main-balance').innerText=formatMoney(accumulated); const bBar=document.getElementById('budget-progress'); if(profile.budget>0){ let perc=Math.min((exp/profile.budget)*100,100); bBar.style.width=`${perc}%`; bBar.style.background=perc>=90?'var(--red)':'var(--accent-2)'; document.getElementById('budget-text').innerText=`${Math.round(perc)}% de ${formatMoney(profile.budget)}`; } else { bBar.style.width='0%'; document.getElementById('budget-text').innerText='Defina no Perfil'; } renderAccounts(mData); applyFilters(); renderSettingsAccounts(); renderCategoriesList(); }
+    function populateFilterOptions(){ const accSel=document.getElementById('filter-account'); accSel.innerHTML='<option value="all">Todas as Contas</option>'; accounts.forEach(a=>accSel.innerHTML+=`<option value="${a.id}">${a.name}</option>`); const catSel=document.getElementById('filter-category'); catSel.innerHTML='<option value="all">Todas as Categorias</option>'; Object.keys(categories.expense).concat(Object.keys(categories.income)).forEach(c=>catSel.innerHTML+=`<option value="${c}">${c}</option>`); }
+    function applyFilters(){ const term=document.getElementById('search-input').value.toLowerCase(); const fType=document.getElementById('filter-type').value, fAcc=document.getElementById('filter-account').value, fCat=document.getElementById('filter-category').value; const m=currentDate.getMonth(), y=currentDate.getFullYear(); const mData=transactions.filter(t=>{ const d=new Date(t.date); const ld=new Date(d.getTime()+d.getTimezoneOffset()*60000); return ld.getMonth()===m && ld.getFullYear()===y; }); const filtered=mData.filter(t=>(t.desc.toLowerCase().includes(term)||t.subcategory.toLowerCase().includes(term)) && (fType==='all'||t.type===fType) && (fAcc==='all'||t.accountId===fAcc) && (fCat==='all'||t.category===fCat)); renderHistoryList(filtered); }
+    function renderHistoryList(data){ const list=document.getElementById('full-t-list'); list.innerHTML=''; if(!data.length){ list.innerHTML='<p style="text-align:center;">Nenhuma transação</p>'; return; } data.sort((a,b)=>new Date(b.date)-new Date(a.date)).forEach(t=>{ const isInc=t.type==='income'; const acc=accounts.find(a=>a.id===t.accountId)?.name||'?'; let icon=categories[t.type]?.[t.category]?.icon||'fa-star'; list.innerHTML+=`<div class="list-item"><div class="li-icon"><i class="fas ${icon}"></i></div><div class="li-info"><h4>${t.desc}</h4><p>${t.category} > ${t.subcategory} • ${acc}</p></div><div class="li-right"><span class="li-amount ${isInc?'inc':'exp'}">${isInc?'+':'-'} ${formatMoney(t.amount)}</span><div class="li-actions"><button class="edit" onclick="openEditTransForm(${t.id})"><i class="fas fa-edit"></i></button><button class="del" onclick="deleteTransaction(${t.id})"><i class="fas fa-trash"></i></button></div></div></div>`; }); }
+    function renderCharts(mData, year){ if(!mData||!Array.isArray(mData)){ const m=currentDate.getMonth(), y=currentDate.getFullYear(); mData=transactions.filter(t=>{ const d=new Date(t.date); const ld=new Date(d.getTime()+d.getTimezoneOffset()*60000); return ld.getMonth()===m && ld.getFullYear()===y; }); year=y; } const style=getComputedStyle(document.documentElement); const c1=style.getPropertyValue('--accent-1').trim()||'#8b5cf6', c2=style.getPropertyValue('--accent-2').trim()||'#00b4d8', cred=style.getPropertyValue('--red').trim()||'#ef4444', cgreen=style.getPropertyValue('--green').trim()||'#10b981'; const ctxL=document.getElementById('lineChart').getContext('2d'); if(lineChart) lineChart.destroy(); const grad=ctxL.createLinearGradient(0,0,0,180); grad.addColorStop(0,c1+'80'); grad.addColorStop(1,c1+'00'); let labelsL=[], dataL=[]; for(let i=5;i>=0;i--){ let m=currentDate.getMonth()-i, y=currentDate.getFullYear(); if(m<0){ m+=12; y-=1; } labelsL.push(monthNames[m]); dataL.push(transactions.filter(t=>{ const ld=new Date(new Date(t.date).getTime()+new Date().getTimezoneOffset()*60000); return t.type==='expense' && ld.getMonth()===m && ld.getFullYear()===y; }).reduce((a,t)=>a+t.amount,0)); } lineChart=new Chart(ctxL,{type:'line',data:{labels:labelsL,datasets:[{data:dataL,borderColor:c1,borderWidth:3,tension:0.4,fill:true,backgroundColor:grad}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}}); const ctxB=document.getElementById('barChart').getContext('2d'); if(barChart) barChart.destroy(); const incY=Array(12).fill(0), expY=Array(12).fill(0); transactions.forEach(t=>{ const ld=new Date(new Date(t.date).getTime()+new Date().getTimezoneOffset()*60000); if(ld.getFullYear()===year) t.type==='income'?incY[ld.getMonth()]+=t.amount:expY[ld.getMonth()]+=t.amount; }); const net=incY.reduce((a,b)=>a+b,0)-expY.reduce((a,b)=>a+b,0); document.getElementById('stat-year-net').innerText=formatMoney(net); barChart=new Chart(ctxB,{type:'bar',data:{labels:monthNames,datasets:[{label:'Receitas',data:incY,backgroundColor:cgreen},{label:'Despesas',data:expY,backgroundColor:cred}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}}); const exp=mData.filter(t=>t.type==='expense'); const catData={}; exp.forEach(t=>catData[t.category]=(catData[t.category]||0)+t.amount); const pieColors=[c1,c2,cgreen,'#fbbf24',cred,'#f472b6']; const leg=document.getElementById('pie-legend'); leg.innerHTML=''; let idx=0; Object.keys(catData).forEach(c=>{ leg.innerHTML+=`<div><span style="display:inline-block;width:10px;height:10px;background:${pieColors[idx%pieColors.length]};border-radius:2px;"></span> ${c}</div>`; idx++; }); if(Object.keys(catData).length===0) leg.innerHTML='Sem dados'; const ctxD=document.getElementById('doughnutChart').getContext('2d'); if(doughnutChart) doughnutChart.destroy(); doughnutChart=new Chart(ctxD,{type:'doughnut',data:{labels:Object.keys(catData),datasets:[{data:Object.values(catData),backgroundColor:pieColors,borderWidth:0,cutout:'70%'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}}); const expMonth=exp.reduce((a,t)=>a+t.amount,0); const fill=document.getElementById('stat-budget-fill'), txt=document.getElementById('stat-budget-txt'); if(profile.budget>0){ const p=Math.min((expMonth/profile.budget)*100,100); fill.style.width=p+'%'; fill.style.background=p>=90?cred:c1; txt.innerText=`${formatMoney(expMonth)} / ${formatMoney(profile.budget)}`; } else { fill.style.width='0%'; txt.innerText='Meta não definida'; } }
+    function updateSelects(){ const t=document.getElementById('trans-type').value; const cSel=document.getElementById('trans-category'); cSel.innerHTML=''; Object.keys(categories[t]).forEach(c=>cSel.innerHTML+=`<option value="${c}">${c}</option>`); updateSubcategories(); }
+    function updateSubcategories(){ const t=document.getElementById('trans-type').value, c=document.getElementById('trans-category').value, sSel=document.getElementById('trans-subcategory'); sSel.innerHTML=''; if(categories[t][c]) categories[t][c].subs.forEach(s=>sSel.innerHTML+=`<option value="${s}">${s}</option>`); }
+    const iconList=['fa-shopping-cart','fa-utensils','fa-car','fa-home','fa-gamepad','fa-pills','fa-plane','fa-tshirt','fa-book','fa-heart','fa-dog','fa-tools','fa-bolt','fa-wifi','fa-coffee','fa-baby','fa-briefcase','fa-gift','fa-mobile-alt','fa-dumbbell'];
+    function populateIconPicker(){ const pk=document.getElementById('icon-picker'); pk.innerHTML=''; iconList.forEach(ic=>{ let d=document.createElement('div'); d.className='icon-opt'; d.innerHTML=`<i class="fas ${ic}"></i>`; d.onclick=function(){ document.querySelectorAll('.icon-opt').forEach(el=>el.classList.remove('selected')); this.classList.add('selected'); document.getElementById('cat-icon').value=ic; }; pk.appendChild(d); }); if(pk.firstChild) pk.firstChild.classList.add('selected'); document.getElementById('cat-icon').value=iconList[0]; }
+    function clearAllData(){ if(confirm("Apagar TUDO?")){ localStorage.clear(); location.reload(); } }
+    function exportData(){ if(!transactions.length) return alert("Sem dados."); let csv="Data,Tipo,Conta,Categoria,Subcategoria,Descricao,Valor\n"; transactions.forEach(t=>{ const acc=accounts.find(a=>a.id===t.accountId)?.name||'N/A'; csv+=`${t.date},${t.type==='income'?'Receita':'Despesa'},${acc},${t.category},${t.subcategory},${t.desc},${t.amount.toString().replace('.',',')}\n`; }); const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download="financas_export.csv"; a.click(); }
     function importCSV() { alert("Função importadora disponível (adicione sua implementação)."); }
 
     // ========== RELATÓRIOS ==========
@@ -781,9 +877,9 @@
         expenses.forEach(e => catMap.set(e.category, (catMap.get(e.category) || 0) + e.amount));
         const labels = Array.from(catMap.keys()), data = Array.from(catMap.values());
         const totalExpense = data.reduce((a, b) => a + b, 0);
-        document.getElementById('report-income').innerText = formatMoney(0);
-        document.getElementById('report-expense').innerText = formatMoney(totalExpense);
-        document.getElementById('report-balance').innerText = formatMoney(-totalExpense);
+        document.getElementById('report-income').innerText = formatMoneyCompact(0);
+        document.getElementById('report-expense').innerText = formatMoneyCompact(totalExpense);
+        document.getElementById('report-balance').innerText = formatMoneyCompact(-totalExpense);
         const ctx = document.getElementById('reportChart').getContext('2d');
         if (reportChartInstance) reportChartInstance.destroy();
         const style = getComputedStyle(document.documentElement);
@@ -821,9 +917,9 @@
         const periodTrans = transactions.filter(t => new Date(t.date) >= startDate && new Date(t.date) <= endDate);
         let inc = 0, exp = 0;
         periodTrans.forEach(t => t.type === 'income' ? inc += t.amount : exp += t.amount);
-        document.getElementById('report-income').innerText = formatMoney(inc);
-        document.getElementById('report-expense').innerText = formatMoney(exp);
-        document.getElementById('report-balance').innerText = formatMoney(inc - exp);
+        document.getElementById('report-income').innerText = formatMoneyCompact(inc);
+        document.getElementById('report-expense').innerText = formatMoneyCompact(exp);
+        document.getElementById('report-balance').innerText = formatMoneyCompact(inc - exp);
     }
     function updateTopCategories(startDate, endDate) {
         const filtered = transactions.filter(t => t.type === 'expense' && new Date(t.date) >= startDate && new Date(t.date) <= endDate);
